@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Apps</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .black-hole {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #000 0%, #1a1a1a 100%);
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .black-hole::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200vmax;
+            height: 200vmax;
+            background: radial-gradient(circle at center, 
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 20%,
+                transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .black-hole::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150vmax;
+            height: 150vmax;
+            background: radial-gradient(circle at center,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.8) 50%,
+                rgba(0, 0, 0, 1) 100%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particle 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        @keyframes particle {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        header {
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: fadeInDown 0.8s ease-out;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .studio-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .studio-icon:hover {
+            transform: rotate(10deg);
+        }
+
+        .studio-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            margin-top: 80px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.1));
+        }
+
+        .stat-number {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .apps-container {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .app {
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .app:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .app:hover .app-icon {
+            transform: scale(1.1);
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .app-description {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        footer {
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            animation: fadeInUp 0.8s ease-out 1s backwards;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+
+            .studio-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .studio-name {
+                font-size: 1.1rem;
+            }
+
+            main {
+                margin-top: 60px;
+                padding: 1rem;
+            }
+
+            .stats-container {
+                gap: 2rem;
+                padding: 1.25rem 2rem;
+                margin: 0 1rem 2rem 1rem;
+            }
+
+            .stat-item:not(:last-child)::after {
+                right: -1rem;
+                height: 30px;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .apps-container {
+                gap: 1.5rem;
+                width: 100%;
+            }
+
+            .app {
+                width: 100%;
+                padding: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .app-icon {
+                width: 80px;
+                height: 80px;
+                border-radius: 16px;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="black-hole"></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <img src="hamanto-studio-icon.png" alt="Hamanto Studio" class="studio-icon">
+        <span class="studio-name">Hamanto Studio</span>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>Innovative Apps for Modern Life</h1>
+            <p>Discover our collection of thoughtfully designed applications that make your daily life easier and more enjoyable.</p>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" id="totalUsers">0</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="activeApps">2</div>
+                <div class="stat-label">Active Apps</div>
+            </div>
+        </div>
+
+        <div class="apps-container">
+            <a href="https://halalin.co" class="app" target="_blank">
+                <img src="halalin-icon.png" alt="Halalin" class="app-icon">
+                <h2 class="app-name">Halalin</h2>
+                <p class="app-description">Find halal products, restaurants, and prayer places in Taiwan</p>
+            </a>
+            <a href="https://hamanto-studio.github.io/spend-limit-lp/" class="app" target="_blank">
+                <img src="spend-limit-icon.png" alt="SpendLimit" class="app-icon">
+                <h2 class="app-name">SpendLimit</h2>
+                <p class="app-description">Track expenses and manage your budget effectively</p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> PT Hamanto Solusi Terkini</p>
+        <p>Jakarta, Indonesia</p>
+    </footer>
+
+    <script>
+        // Animated counter function
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString();
+                }
+            };
+            
+            updateCounter();
+        }
+
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random starting position
+                const startX = Math.random() * window.innerWidth;
+                const startY = Math.random() * window.innerHeight;
+                
+                // Random movement
+                const tx = (Math.random() - 0.5) * 200;
+                const ty = (Math.random() - 0.5) * 200;
+                
+                particle.style.left = `${startX}px`;
+                particle.style.top = `${startY}px`;
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 3}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Start animations when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounter(document.getElementById('totalUsers'), 42253);
+            createParticles();
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
