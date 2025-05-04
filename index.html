@@ -226,13 +226,123 @@
             letter-spacing: 0.05em;
         }
 
+        .services-container {
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .services-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card {
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .service-description {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .service-price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .price-amount {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0.5rem;
+        }
+
+        .price-period {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-container {
+            text-align: center;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         .apps-container {
             display: flex;
             gap: 4rem;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
         }
 
         .app {
@@ -353,14 +463,16 @@
                 font-size: 0.8rem;
             }
 
-            .apps-container {
-                gap: 1.5rem;
-                width: 100%;
+            .services-container {
+                padding: 1.25rem 2rem;
             }
 
-            .app {
+            .services-grid {
+                flex-direction: column;
+            }
+
+            .service-card {
                 width: 100%;
-                padding: 1.5rem;
             }
 
             .hero h1 {
@@ -378,6 +490,160 @@
                 border-radius: 16px;
                 padding: 6px;
             }
+        }
+
+        .services-elegant {
+            max-width: 900px;
+            margin: 3rem auto 2rem auto;
+            padding: 2.5rem 2rem 2rem 2rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 32px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+            backdrop-filter: blur(18px);
+            border: 1.5px solid rgba(255,255,255,0.13);
+            text-align: center;
+        }
+        .services-elegant-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.01em;
+            text-shadow: 0 2px 24px rgba(0,0,0,0.18);
+        }
+        .services-elegant-grid {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .services-elegant-card {
+            flex: 1 1 320px;
+            max-width: 380px;
+            background: rgba(255,255,255,0.13);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s;
+            border: 1px solid rgba(255,255,255,0.10);
+            position: relative;
+        }
+        .services-elegant-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.22);
+        }
+        .services-elegant-icon {
+            font-size: 3.2rem;
+            margin-bottom: 1.2rem;
+            background: rgba(255,255,255,0.10);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+        }
+        .services-elegant-content h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.7rem;
+            letter-spacing: 0.01em;
+        }
+        .services-elegant-content p {
+            color: rgba(255,255,255,0.88);
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+        .services-elegant-price {
+            background: rgba(255,255,255,0.09);
+            border-radius: 12px;
+            padding: 0.7rem 1.2rem;
+            font-size: 1.05rem;
+            color: #fff;
+            font-weight: 500;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .services-elegant-price strong {
+            font-size: 1.25rem;
+            color: #fff;
+            font-weight: 700;
+            margin: 0 0.3rem;
+            letter-spacing: 0.01em;
+        }
+        .services-elegant-cta {
+            margin-top: 2.5rem;
+        }
+        .services-elegant-cta p {
+            color: rgba(255,255,255,0.93);
+            font-size: 1.18rem;
+            margin-bottom: 1.2rem;
+        }
+        .services-elegant-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #4CAF50 0%, #43e97b 100%);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 32px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 24px rgba(76, 175, 80, 0.18);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            border: none;
+        }
+        .services-elegant-button:hover {
+            background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 32px rgba(67, 233, 123, 0.22);
+        }
+        @media (max-width: 900px) {
+            .services-elegant-grid {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .services-elegant-card {
+                max-width: 100%;
+            }
+            .services-elegant {
+                padding: 1.5rem 0.5rem 1.5rem 0.5rem;
+            }
+        }
+        .services-elegant-toggle {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #232526 0%, #414345 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 0.7rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .services-elegant-toggle:hover {
+            background: linear-gradient(90deg, #414345 0%, #232526 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+        .services-elegant-expandable {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.6s cubic-bezier(.4,2,.6,1), opacity 0.4s;
+        }
+        .services-elegant-expandable.expanded {
+            max-height: 1200px;
+            opacity: 1;
+            transition: max-height 0.8s cubic-bezier(.4,2,.6,1), opacity 0.5s;
         }
     </style>
 </head>
@@ -419,6 +685,43 @@
                 <p class="app-description">Track expenses and manage your budget effectively</p>
             </a>
         </div>
+
+        <section class="services-elegant">
+            <h2 class="services-elegant-title">Our Services</h2>
+            <button id="toggleServices" class="services-elegant-toggle">Show Services</button>
+            <div class="services-elegant-expandable" id="servicesExpandable">
+                <div class="services-elegant-grid">
+                    <div class="services-elegant-card">
+                        <div class="services-elegant-icon" aria-label="Mobile App">📱</div>
+                        <div class="services-elegant-content">
+                            <h3>Mobile App Development</h3>
+                            <p>Custom mobile applications for Android and iOS. We deliver beautiful, high-performance apps tailored to your needs.</p>
+                            <div class="services-elegant-price">
+                                <span>Starting from</span>
+                                <strong>$25,000</strong>
+                                <span>for minimum 6 months project</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services-elegant-card">
+                        <div class="services-elegant-icon" aria-label="AI Solutions">🤖</div>
+                        <div class="services-elegant-content">
+                            <h3>AI Solutions</h3>
+                            <p>Build and integrate advanced AI into mobile apps. From machine learning to NLP, we bring intelligence to your products.</p>
+                            <div class="services-elegant-price">
+                                <span>Starting from</span>
+                                <strong>$35,000</strong>
+                                <span>for minimum 6 months project</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-elegant-cta">
+                    <p>Ready to transform your ideas into reality?</p>
+                    <a href="mailto:hamanto.st@gmail.com" class="services-elegant-button">Get in Touch</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -481,6 +784,14 @@
             createParticles();
             // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
+            const toggleBtn = document.getElementById('toggleServices');
+            const expandable = document.getElementById('servicesExpandable');
+            let expanded = false;
+            toggleBtn.addEventListener('click', () => {
+                expanded = !expanded;
+                expandable.classList.toggle('expanded', expanded);
+                toggleBtn.textContent = expanded ? 'Hide Services' : 'Show Services';
+            });
         });
     </script>
 </body>
